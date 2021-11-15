@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api
 
-from src.resources.lib import Hero, HeroList
+from src.resources.lib import HeroResource, HeroResourceList
 
 app = Flask(__name__)
 api = Api(app)
@@ -11,8 +11,8 @@ class HelloWorld(Resource):
         return {'hello': 'world'}
 
 api.add_resource(HelloWorld, '/')
-api.add_resource(Hero, '/hero', '/hero/<hero_id>')
-api.add_resource(HeroList, '/hero/list')
+api.add_resource(HeroResource, '/hero', '/hero/<int:hero_id>')
+api.add_resource(HeroResourceList, '/hero/list')
 
 
 if __name__ == '__main__':

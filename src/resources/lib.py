@@ -1,2 +1,1 @@
-from .hero.hero import Hero, HeroList
-
+from .hero.hero import HeroResource, HeroResourceList
