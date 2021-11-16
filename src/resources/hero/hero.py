@@ -26,7 +26,19 @@ class HeroResource(Resource):
 
     @classmethod
     def put(cls, hero_id: int):
-        return {'hello': 'put'}
+        hero_req = request.json
+        # {
+        #     "name": 12334423,
+        #     "description": 123123
+        # }
+        hero = Hero.find_by_id(hero_id)
+        if not hero:
+            return {"message": "hero_id not exist"}, 400
+        hero.update(hero_req)
+        return {'hero': hero.get()}
+
+
+
 
     @classmethod
     def delete(cls, hero_id: int):
